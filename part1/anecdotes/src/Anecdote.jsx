@@ -1,9 +1,12 @@
-const Anecdote = ({anecdote}) => {
+const Anecdote = ({anecdote, title}) => {
     
     return(
-        <p>
-            {anecdote}
-        </p>
+        <div>
+            <h2>{title}</h2>
+            <p>
+                {anecdote}
+            </p>
+        </div>
     )
 }
 

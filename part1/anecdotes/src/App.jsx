@@ -36,14 +36,19 @@ function App() {
     setVotes(newVotes)
   }
 
+  const getMostVotedIndex = () => {
+    return votes.indexOf(Math.max(...votes))
+  }
+
   //console.log("Array length:", anecdotes_length)
   //console.log("Random anecdote:", anecdotes[randomInt(anecdotes_length)])
 
   return (
     <>
-      <Anecdote anecdote={anecdotes[selected]} />
+      <Anecdote title="Anecdote of the Day" anecdote={anecdotes[selected]} />
       <Button text="next anecdote" onClick={handleNextAnecdote}/>
       <Button text="vote" onClick={handleVote}/>
+      <Anecdote title="Anecdote with most votes" anecdote={anecdotes[getMostVotedIndex()]} />
     </>
   )
 }
