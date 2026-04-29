@@ -4,7 +4,7 @@ import Button from './Button'
 
 function App() {
   const [selected, setSelected] = useState(0)
-
+  
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -16,7 +16,9 @@ function App() {
     'The only way to go fast, is to go well.'
   ]
   const anecdotes_length = anecdotes.length
-
+  
+  const [votes, setVotes] = useState(new Array(anecdotes_length).fill(0))
+  
 
   const randomInt = (max) => {
     return Math.floor(Math.random() * max)
@@ -27,13 +29,21 @@ function App() {
     setSelected(randomInt(anecdotes_length))
   }
 
+  const handleVote = () => {
+    const newVotes = [...votes]
+    newVotes[selected] += 1
+    console.log("Votes updated:", newVotes)
+    setVotes(newVotes)
+  }
+
   //console.log("Array length:", anecdotes_length)
-  console.log("Random anecdote:", anecdotes[randomInt(anecdotes_length)])
+  //console.log("Random anecdote:", anecdotes[randomInt(anecdotes_length)])
 
   return (
     <>
       <Anecdote anecdote={anecdotes[selected]} />
       <Button text="next anecdote" onClick={handleNextAnecdote}/>
+      <Button text="vote" onClick={handleVote}/>
     </>
   )
 }
